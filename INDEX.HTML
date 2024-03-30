@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Barcode Generator</title>
+  <style>
+    #barcode {
+      width: 300px;
+      height: 100px;
+      border: 1px solid black;
+      margin-top: 10px;
+    }
+    #text {
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+  <script>
+    function generateBarcode() {
+      // Get the input value
+      var input = document.getElementById("input").value;
+
+      // Generate the barcode image
+      var img = new Image();
+      img.src = "http://barcode.tec-it.com/barcode.ashx?data=" + input + "&code=Code128&dpi=96&imagetype=Png";
+
+      // Set the barcode image source
+      document.getElementById("barcode").src = img.src;
+
+      // Set the barcode text
+      document.getElementById("text").innerHTML = input;
+    }
+  </script>
+</head>
+<body>
+  <div>
+    <input type="text" id="input" placeholder="Enter text" />
+    <button onclick="generateBarcode()">Generate Barcode</button>
+  </div>
+  <div>
+    <img id="barcode" />
+    <div id="text"></div>
+  </div>
+</body>
+</html>
